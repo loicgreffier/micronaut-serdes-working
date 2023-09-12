@@ -1,7 +1,7 @@
 package com.example;
 
 import com.example.demo.BodyDto;
-import com.example.demo.ConcreteValidator;
+import com.example.demo.ResourceValidator;
 import io.micronaut.http.HttpMethod;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
@@ -22,7 +22,7 @@ class WorksDemoTest {
     @Test
     void testItWorks() {
         BodyDto bodyDto = BodyDto.builder()
-            .concreteValidator(ConcreteValidator.makeDefault())
+            .validator(ResourceValidator.Range.between(1,1))
             .build();
 
         HttpResponse<BodyDto> response = client
